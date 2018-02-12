@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Derby - CRM" uuid="ba310712-53f2-44ad-b488-df161213ddfa">
+    <database-info product="Apache Derby" version="10.9.1.0 - (1344872)" jdbc-version="4.2" driver-name="Apache Derby Network Client JDBC Driver" driver-version="10.11.1.1 - (1616546)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <schema name="CRM" catalog=""/>
+    <table name="ACCOUNTS" schema="CRM" catalog="" type="TABLE">
+      <column name="Account" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Market Sector" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Sector Desc" sqlType="VARCHAR" precision="2000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Account_ID" sqlType="NUMERIC" precision="4" scale="0" nullable="false" jdbcType="2"/>
+      <column name="Stock Code" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Market Cap" sqlType="NUMERIC" precision="8" scale="2" nullable="true" jdbcType="2"/>
+      <column name="Internal Rating" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Price" sqlType="NUMERIC" precision="6" scale="2" nullable="true" jdbcType="2"/>
+      <column name="Currency" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Daily Change" sqlType="NUMERIC" precision="3" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Weekly Change" sqlType="NUMERIC" precision="3" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Monthly Change" sqlType="NUMERIC" precision="3" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Yearly Change" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="XPK1ACCOUNTS" columns="Account_ID"/>
+      <exported-key name="XFK1ACCOUNT_ADDRESS" table="ACCOUNT_ADDRESS" schema="CRM" catalog="" columns="Acct_ID"/>
+    </table>
+    <table name="ACCOUNT_ADDRESS" schema="CRM" catalog="" type="TABLE">
+      <column name="Acct_ID" sqlType="NUMERIC" precision="4" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Acct Addr" sqlType="VARCHAR" precision="2000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="City" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Country" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="State" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Postal Code" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <foreign-key name="XFK1ACCOUNT_ADDRESS" columns="Acct_ID" ref-table="ACCOUNTS" ref-schema="CRM" ref-catalog="" ref-columns="Account_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="ACCOUNT_INFORMATION" schema="CRM" catalog="" type="TABLE">
+      <column name="branch_number" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="account_number" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="client_id" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Household_id" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Client Name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="BUSINESS_ENTITIES" schema="CRM" catalog="" type="TABLE">
+      <column name="ID" sqlType="NUMERIC" precision="4" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Company" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Stock Code" sqlType="VARCHAR" precision="9" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Country" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Sector" sqlType="VARCHAR" precision="22" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Market Cap" sqlType="NUMERIC" precision="8" scale="2" nullable="true" jdbcType="2"/>
+      <column name="Internal Rating" sqlType="VARCHAR" precision="2" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Price" sqlType="NUMERIC" precision="6" scale="2" nullable="true" jdbcType="2"/>
+      <column name="Currency" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Sectorization" sqlType="VARCHAR" precision="81" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Daily Change" sqlType="NUMERIC" precision="10" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Weekly Change" sqlType="NUMERIC" precision="10" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Monthly Change" sqlType="NUMERIC" precision="10" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Yearly Change" sqlType="NUMERIC" precision="10" scale="0" nullable="true" jdbcType="2"/>
+    </table>
+    <table name="CATEGORY_DETAILS" schema="CRM" catalog="" type="TABLE">
+      <column name="CategoryID" sqlType="NUMERIC" precision="10" scale="0" nullable="false" jdbcType="2"/>
+      <column name="CategoryName" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Description" sqlType="VARCHAR" precision="58" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="XPK1CATEGORY_DETAILS" columns="CategoryID"/>
+      <exported-key name="XFK2PRODUCT_DETAILS" table="PRODUCT_DETAILS" schema="CRM" catalog="" columns="CategoryID"/>
+    </table>
+    <table name="COUNTERPARTY_INFORMATION" schema="CRM" catalog="" type="TABLE">
+      <column name="LEGALNAME" sqlType="VARCHAR" precision="2000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REG_CITY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REG_STATE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REG_COUNTRY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_ID" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LEI" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_TYPE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_NAME" sqlType="VARCHAR" precision="2000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IMMEDIATE_PARENT_ID" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OWNER_TYPE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IMMEDIATE_PARENT_ISO" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IMMEDIATE_PARENT_NAME" sqlType="VARCHAR" precision="2000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ULT_PARENT_ID" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ULT_PARENT_ISO" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ULT_PARENT_NAME" sqlType="VARCHAR" precision="2000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACCT_ID" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="CUSTOMER" schema="CRM" catalog="" type="TABLE">
+      <column name="Customer_Code" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CompanyName" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ContactTitle" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Address" sqlType="VARCHAR" precision="46" scale="0" nullable="true" jdbcType="12"/>
+      <column name="City" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Region" sqlType="VARCHAR" precision="13" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PostalCode" sqlType="VARCHAR" precision="9" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Country" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Phone" sqlType="VARCHAR" precision="17" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Fax" sqlType="VARCHAR" precision="17" scale="0" nullable="true" jdbcType="12"/>
+      <column name="First Name" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Last Name" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Driving License" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="EMPLOYEES" schema="CRM" catalog="" type="TABLE">
+      <column name="EmployeeID" sqlType="NUMERIC" precision="10" scale="0" nullable="false" jdbcType="2"/>
+      <column name="LastName" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FirstName" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Title" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TitleOfCourtesy" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="BirthDate" sqlType="VARCHAR" precision="23" scale="0" nullable="true" jdbcType="12"/>
+      <column name="HireDate" sqlType="VARCHAR" precision="23" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Address" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="City" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Region" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PostalCode" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Country" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="HomePhone" sqlType="VARCHAR" precision="24" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Extension" sqlType="NUMERIC" precision="24" scale="0" nullable="true" jdbcType="2"/>
+      <column name="ReportsTo" sqlType="NUMERIC" precision="10" scale="0" nullable="true" jdbcType="2"/>
+      <column name="PhotoPath" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="XPK1EMPLOYEES" columns="EmployeeID"/>
+      <foreign-key name="XFK1EMPLOYEES" columns="ReportsTo" ref-table="EMPLOYEES" ref-schema="CRM" ref-catalog="" ref-columns="EmployeeID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="XFK1EMPLOYEES" table="EMPLOYEES" schema="CRM" catalog="" columns="ReportsTo"/>
+      <exported-key name="XFK2TERRITORIES_OF_EMPLOYEES" table="TERRITORIES_OF_EMPLOYEES" schema="CRM" catalog="" columns="ID_FOR_EMPLOYEE"/>
+    </table>
+    <table name="INVENTORY" schema="CRM" catalog="" type="TABLE">
+      <column name="INVENTORYID" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DESCRIPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FAMILY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PRICE" sqlType="NUMERIC" precision="4" scale="1" nullable="true" jdbcType="2"/>
+      <column name="CREATEDATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="CREATEUSER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MODIFYDATE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MODIFYUSER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PRODUCTGROUP" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STATUS" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROGRAM" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SUPPLIER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VENDOR" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SITEID" sqlType="VARCHAR" precision="2000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="WAREHOUSELOCATION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="COMMISSIONABLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TAXABLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACCOUNTINGPERIOD" sqlType="NUMERIC" precision="2" scale="0" nullable="true" jdbcType="2"/>
+      <column name="GLACCOUNTNUMBER" sqlType="NUMERIC" precision="8" scale="0" nullable="true" jdbcType="2"/>
+      <column name="GLSUBACCOUNTNUMBER" sqlType="NUMERIC" precision="9" scale="0" nullable="true" jdbcType="2"/>
+      <column name="DATAOWNER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PRODUCTTYPE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FIXEDCOST" sqlType="NUMERIC" precision="4" scale="1" nullable="true" jdbcType="2"/>
+      <column name="GLOBALSYNCID" sqlType="NUMERIC" precision="5" scale="0" nullable="true" jdbcType="2"/>
+      <column name="APPID" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ISSN" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="COMMODITYGROUPID" sqlType="VARCHAR" precision="2000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACTIVEFLAG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SELLINGALLOWEDFLAG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SELLINGUOMID" sqlType="VARCHAR" precision="2000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CLASSIFICATION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="COMMODITYTYPE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DIVISION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SELLING_RIGHTS_CODE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CORE_PRODUCT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SUPPLEMENT_PRODUCT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PRODUCT_TYPE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PACKAGE_TYPE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RESTRICTED_CODE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PRIORITY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TRIM_CODE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DISCOUNT_CLASS" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SERIES_CODE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PRODUCT_CORE_NUMBER" sqlType="NUMERIC" precision="9" scale="0" nullable="true" jdbcType="2"/>
+      <column name="ITEM_PRODUCT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SELL_SWAP_INDICATOR" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RETURN_ALLOWED" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ORDER_PROCESSING_ALLOWED" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="ORDER_DETAILS" schema="CRM" catalog="" type="TABLE">
+      <column name="OrderID" sqlType="NUMERIC" precision="10" scale="0" nullable="false" jdbcType="2"/>
+      <column name="ProductID" sqlType="NUMERIC" precision="10" scale="0" nullable="false" jdbcType="2"/>
+      <column name="UnitPrice" sqlType="NUMERIC" precision="19" scale="4" nullable="true" jdbcType="2"/>
+      <column name="Quantity" sqlType="NUMERIC" precision="5" scale="0" nullable="true" jdbcType="2"/>
+      <primary-key name="XPK1ORDER_DETAILS" columns="OrderID,ProductID"/>
+      <foreign-key name="XFK1ORDER_DETAILS" columns="OrderID" ref-table="ORDER_INFORMATION" ref-schema="CRM" ref-catalog="" ref-columns="OrderID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="XFK2ORDER_DETAILS" columns="ProductID" ref-table="PRODUCT_DETAILS" ref-schema="CRM" ref-catalog="" ref-columns="ProductID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="ORDER_INFORMATION" schema="CRM" catalog="" type="TABLE">
+      <column name="OrderID" sqlType="NUMERIC" precision="10" scale="0" nullable="false" jdbcType="2"/>
+      <column name="CustomerID" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EmployeeID" sqlType="NUMERIC" precision="10" scale="0" nullable="true" jdbcType="2"/>
+      <column name="OrderDate" sqlType="VARCHAR" precision="23" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ShipVia" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Freight" sqlType="NUMERIC" precision="19" scale="4" nullable="true" jdbcType="2"/>
+      <column name="ShipName" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ShipAddress" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ShipCity" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ShipRegion" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ShipPostalCode" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ShipCountry" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ORDER_TIME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RequiredDt" sqlType="TIMESTAMP" precision="26" scale="6" nullable="true" jdbcType="93"/>
+      <column name="ShippedDt" sqlType="TIMESTAMP" precision="26" scale="6" nullable="true" jdbcType="93"/>
+      <primary-key name="XPK1ORDER_INFORMATION" columns="OrderID"/>
+      <foreign-key name="XFK1ORDER_INFORMATION" columns="ShipVia" ref-table="SHIPPING_DETAILS" ref-schema="CRM" ref-catalog="" ref-columns="SHIPPER_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="XFK1ORDER_DETAILS" table="ORDER_DETAILS" schema="CRM" catalog="" columns="OrderID"/>
+    </table>
+    <table name="PARTY" schema="CRM" catalog="" type="TABLE">
+      <column name="CUSTMR_ID" sqlType="NUMERIC" precision="31" scale="0" nullable="true" jdbcType="2"/>
+      <column name="ADDRESS" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SET_ID" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CUSTMR_NAME" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="COUNTRY" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CUSTMR_CITY" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="POSTAL" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STATE" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="PRODUCT_DETAILS" schema="CRM" catalog="" type="TABLE">
+      <column name="ProductID" sqlType="NUMERIC" precision="10" scale="0" nullable="false" jdbcType="2"/>
+      <column name="ProductName" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SupplierID" sqlType="NUMERIC" precision="10" scale="0" nullable="true" jdbcType="2"/>
+      <column name="CategoryID" sqlType="NUMERIC" precision="10" scale="0" nullable="true" jdbcType="2"/>
+      <column name="QuantityPerUnit" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="UnitPrice" sqlType="NUMERIC" precision="19" scale="4" nullable="true" jdbcType="2"/>
+      <column name="UnitsInStock" sqlType="NUMERIC" precision="5" scale="0" nullable="true" jdbcType="2"/>
+      <column name="UnitsOnOrder" sqlType="NUMERIC" precision="5" scale="0" nullable="true" jdbcType="2"/>
+      <column name="ReorderLevel" sqlType="NUMERIC" precision="5" scale="0" nullable="true" jdbcType="2"/>
+      <primary-key name="XPK1PRODUCT_DETAILS" columns="ProductID"/>
+      <foreign-key name="XFK2PRODUCT_DETAILS" columns="CategoryID" ref-table="CATEGORY_DETAILS" ref-schema="CRM" ref-catalog="" ref-columns="CategoryID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="XFK1PRODUCT_DETAILS" columns="SupplierID" ref-table="SUPPLIER_DETAILS" ref-schema="CRM" ref-catalog="" ref-columns="SupplierID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="XFK2ORDER_DETAILS" table="ORDER_DETAILS" schema="CRM" catalog="" columns="ProductID"/>
+    </table>
+    <table name="PUBLICATIONS" schema="CRM" catalog="" type="TABLE">
+      <column name="PUBLICATION_ID_PREFIX" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PUBLICATION_ID" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="REFERENCE_AUTHOR" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TITLE" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PUBLICATION_NAME" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LISTED_PUBLCTN_DATE" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACTUAL_PUBLCTN_DATE" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PUBLISHER" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PUBLCTN_PLACE" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ISBN" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ISSN" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PAGES" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PUBLCTN_COMMENT" sqlType="VARCHAR" precision="315" scale="0" nullable="true" jdbcType="12"/>
+      <column name="UPDATE_DATE" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="REGION_DETAILS" schema="CRM" catalog="" type="TABLE">
+      <column name="REGION_ID" sqlType="NUMERIC" precision="22" scale="0" nullable="false" jdbcType="2"/>
+      <column name="REGION_DESCRIPTION" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="XPK1REGION_DETAILS" columns="REGION_ID"/>
+      <exported-key name="XFK1TERRITORY_DETAILS" table="TERRITORY_DETAILS" schema="CRM" catalog="" columns="ID_FOR_REGION"/>
+    </table>
+    <table name="RETAIL SALES INFO" schema="CRM" catalog="" type="TABLE">
+      <column name="Date" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Market" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="State" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Market_Size" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Product_Type" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Product" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Type" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Sales" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Profit" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Margin" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="COGS" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Total_Expenses" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Marketing" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Inventory" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Budget_Profit" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Budget_Margin" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Budget_Sales" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Budget_COGS" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+    </table>
+    <table name="SALESDATA" schema="CRM" catalog="" type="TABLE">
+      <column name="Sales_Total" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Order_Priority" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Discount" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Ship_Method" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Customer_Name" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Gross_Profit" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Region" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Market_Segment" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Product_Category_1" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Product_Category_2" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Product_Category_3" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Product_Category_4" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Ship_Container" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Order_Date" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Delivery_Date" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Product_Inventory" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Record_No" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Order_ID" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <column name="Delivery_TM" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="SHIPPING_DETAILS" schema="CRM" catalog="" type="TABLE">
+      <column name="SHIPPER_ID" sqlType="NUMERIC" precision="22" scale="0" nullable="false" jdbcType="2"/>
+      <column name="COMPANY_NAME" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SHIPPER_PHONE" sqlType="VARCHAR" precision="24" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="XPK1SHIPPING_DETAILS" columns="SHIPPER_ID"/>
+      <exported-key name="XFK1ORDER_INFORMATION" table="ORDER_INFORMATION" schema="CRM" catalog="" columns="ShipVia"/>
+    </table>
+    <table name="SUPPLIER_DETAILS" schema="CRM" catalog="" type="TABLE">
+      <column name="SupplierID" sqlType="NUMERIC" precision="10" scale="0" nullable="false" jdbcType="2"/>
+      <column name="CompanyName" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ContactName" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ContactTitle" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Address" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="City" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Region" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PostalCode" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Country" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Phone" sqlType="VARCHAR" precision="24" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Fax" sqlType="VARCHAR" precision="24" scale="0" nullable="true" jdbcType="12"/>
+      <column name="HomePage" sqlType="VARCHAR" precision="94" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="XPK1SUPPLIER_DETAILS" columns="SupplierID"/>
+      <exported-key name="XFK1PRODUCT_DETAILS" table="PRODUCT_DETAILS" schema="CRM" catalog="" columns="SupplierID"/>
+    </table>
+    <table name="TERRITORIES_OF_EMPLOYEES" schema="CRM" catalog="" type="TABLE">
+      <column name="ID_FOR_EMPLOYEE" sqlType="NUMERIC" precision="10" scale="0" nullable="true" jdbcType="2"/>
+      <column name="ID_FOR_TERRITORY" sqlType="NUMERIC" precision="20" scale="0" nullable="true" jdbcType="2"/>
+      <foreign-key name="XFK2TERRITORIES_OF_EMPLOYEES" columns="ID_FOR_EMPLOYEE" ref-table="EMPLOYEES" ref-schema="CRM" ref-catalog="" ref-columns="EmployeeID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="XFK1TERRITORIES_OF_EMPLOYEES" columns="ID_FOR_TERRITORY" ref-table="TERRITORY_DETAILS" ref-schema="CRM" ref-catalog="" ref-columns="TERRITORY_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="TERRITORY_DETAILS" schema="CRM" catalog="" type="TABLE">
+      <column name="TERRITORY_ID" sqlType="NUMERIC" precision="20" scale="0" nullable="false" jdbcType="2"/>
+      <column name="TERRITORY_DESCRIPTION" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ID_FOR_REGION" sqlType="NUMERIC" precision="22" scale="0" nullable="true" jdbcType="2"/>
+      <primary-key name="XPK1TERRITORY_DETAILS" columns="TERRITORY_ID"/>
+      <foreign-key name="XFK1TERRITORY_DETAILS" columns="ID_FOR_REGION" ref-table="REGION_DETAILS" ref-schema="CRM" ref-catalog="" ref-columns="REGION_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="XFK1TERRITORIES_OF_EMPLOYEES" table="TERRITORIES_OF_EMPLOYEES" schema="CRM" catalog="" columns="ID_FOR_TERRITORY"/>
+    </table>
+  </data-source>
+</component>

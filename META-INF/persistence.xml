@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistenceUnit">
+        <class>com.model.Accounts</class>
+        <class>com.model.AccountAddress</class>
+        <class>com.model.AccountInformation</class>
+        <class>com.model.BusinessEntities</class>
+        <class>com.model.CategoryDetails</class>
+        <class>com.model.CounterpartyInformation</class>
+        <class>com.model.Customer</class>
+        <class>com.model.Employees</class>
+        <class>com.model.Inventory</class>
+        <class>com.model.OrderDetails</class>
+        <class>com.model.OrderInformation</class>
+        <class>com.model.Party</class>
+        <class>com.model.ProductDetails</class>
+        <class>com.model.Publications</class>
+        <class>com.model.RegionDetails</class>
+        <class>com.model.RetailSalesInfo</class>
+        <class>com.model.Salesdata</class>
+        <class>com.model.ShippingDetails</class>
+        <class>com.model.SupplierDetails</class>
+        <class>com.model.TerritoriesOfEmployees</class>
+        <class>com.model.TerritoryDetails</class>
+        <properties>
+            <property name="eclipselink.jdbc.url" value="jdbc:derby://localhost:1530/CRM;ssl=basic"/>
+            <property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="eclipselink.jdbc.user"/>
+            <property name="eclipselink.jdbc.password"/>
+            <property name="hibernate.connection.url" value="jdbc:derby://localhost:1530/CRM;ssl=basic"/>
+            <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="hibernate.connection.username"/>
+            <property name="hibernate.connection.password"/>
+            <property name="openjpa.ConnectionURL" value="jdbc:derby://localhost:1530/CRM;ssl=basic"/>
+            <property name="openjpa.ConnectionDriverName" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="openjpa.ConnectionUserName"/>
+            <property name="openjpa.ConnectionPassword"/>
+            <property name="toplink.jdbc.url" value="jdbc:derby://localhost:1530/CRM;ssl=basic"/>
+            <property name="toplink.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="toplink.jdbc.user"/>
+            <property name="toplink.jdbc.password"/>
+        </properties>
+    </persistence-unit>
+</persistence>
