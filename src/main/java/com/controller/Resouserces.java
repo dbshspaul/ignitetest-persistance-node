@@ -1,6 +1,8 @@
 package com.controller;
 
+import com.model.Account1;
 import org.apache.ignite.Ignite;
+import org.apache.ignite.IgniteCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,9 +17,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Resouserces {
     @Autowired
     Ignite ignite;
+    @Autowired
+    IgniteCache<String, Account1> cache;
 
-    @GetMapping(name = "/",produces = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping(path = "/",produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity getAll() {
+        cache.get("dsfdsf");
         return new ResponseEntity("hello", HttpStatus.OK);
     }
 

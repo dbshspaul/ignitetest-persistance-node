@@ -6,13 +6,16 @@ import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
 import org.apache.ignite.Ignition;
 import org.apache.ignite.cache.CacheMode;
-import org.apache.ignite.cache.QueryEntity;
 import org.apache.ignite.configuration.CacheConfiguration;
 import org.apache.ignite.configuration.DataStorageConfiguration;
 import org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi;
 import org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 import javax.cache.configuration.FactoryBuilder;
 import java.util.Arrays;
@@ -22,6 +25,9 @@ import java.util.Arrays;
  */
 @Configuration
 public class IgniteConfiguration {
+    private static final Logger LOGGER = LoggerFactory.getLogger(IgniteConfiguration.class);
+    @Autowired
+    private Ignite ignite;
 
     @Bean(name = "ignite")
     public Ignite getIgnite(){
@@ -40,22 +46,23 @@ public class IgniteConfiguration {
 
         Ignite ignite = Ignition.start(igniteConfiguration);
         ignite.active(true);
+        LOGGER.info("<<<<<<<<<<<<<<< Cache Started successfully");
+        return ignite;
+    }
 
-
+    @Bean(name = "cache")
+    @Lazy
+    public IgniteCache<String, Account1> getCache(){
         CacheConfiguration cfg = new CacheConfiguration();
         cfg.setName("myCache");
         cfg.setReadThrough(true);
         cfg.setWriteThrough(true);
         cfg.setCacheMode(CacheMode.PARTITIONED);
-        QueryEntity entity = new QueryEntity();
-        entity.setKeyType(String.class.getName());
-        entity.setKeyType(Account1.class.getName());
         cfg.setCacheStoreFactory(FactoryBuilder.factoryOf(CacheStore.class));
         IgniteCache<String, Account1> cache = ignite.getOrCreateCache(cfg);
 
         cache.clear();
         cache.loadCache(null);
-        System.out.println("<<<<<<<<<<<<<<<all done");
-        return ignite;
+        return cache;
     }
 }
